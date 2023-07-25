@@ -14,6 +14,8 @@ bool compare(const string& a, const string& b){
 }
 
 int main(void) {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
 	int num;
 	cin >> num;
 	vector<string> words;
