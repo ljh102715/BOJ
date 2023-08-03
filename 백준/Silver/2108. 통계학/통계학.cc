@@ -9,7 +9,11 @@ using namespace std;
 
 	vector<int> arr;
 	int arr2[8001] = {0,};
-int main(void) {
+int main(void) {	
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
 	int num, temp, middle, second, ifFirst = 1, total = 0;
 	cin >> num;
 
