@@ -6,7 +6,7 @@
 #include <map>
 using namespace std;
 
-int isPalindrome(string a, int* cnt);
+int isPalindrome(const string& a, int start, int end, int* cnt);
 int main(void) {	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -19,15 +19,15 @@ int main(void) {
 	{
 		cnt = 0;
 		cin >> a;
-		cout << isPalindrome(a, &cnt) << " ";
+		cout << isPalindrome(a, 0, a.length()-1, &cnt) << " ";
 		cout << cnt << "\n";
 	}
 }
-int isPalindrome(string a, int* cnt){
+int isPalindrome(const string& a, int start, int end, int* cnt){
 	(*cnt)++;
-	if(a.length() <=1) return 1;
-	if(a.at(0) == a.at(a.length()-1)){
-		return isPalindrome(a.substr(1, a.length()-2), cnt);
+	if(start >= end) return 1;
+	if(a.at(start) == a.at(end)){
+		return isPalindrome(a, start+1, end-1, cnt);
 	}
 	else return 0;
 }
