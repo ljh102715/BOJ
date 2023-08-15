@@ -9,27 +9,15 @@ int main(void) {
 	cin.tie(NULL); cout.tie(NULL);
 
     
-    int num, arr[501][501], dp[501][501] = {0,};
+    int num, dp[501][501] = {0,};
     cin >> num;
     for(int i = 1; i <= num; i++)
         for(int j = 1; j <= i; j++)
-            cin >> arr[i][j];
+            cin >> dp[i][j];
 
-    dp[1][1] = arr[1][1];
-    for(int i = 2; i <= num; i++)
+    for(int i = num-1; i >=1; i--)
         for(int j = 1; j <= i; j++){
-            if(j == 1)
-                dp[i][j] = dp[i-1][j] + arr[i][j];
-            else if(j == i)
-                dp[i][j] = dp[i-1][j-1] + arr[i][j];
-            else   
-                dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + arr[i][j];
+            dp[i][j] += max(dp[i+1][j], dp[i+1][j+1]);
         }
-
-    int max = dp[num][1];
-    for(int i = 2; i <= num; i++)
-        if(max < dp[num][i]){
-            max = dp[num][i];
-        }
-    cout << max;
+    cout << dp[1][1];
 }
