@@ -12,6 +12,8 @@ bool finished = false;
 bool check(int row, int col, int num);
 void backtracking();
 int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
 	for(int i = 1; i < 10; i++)
 		for(int j = 1; j < 10; j++){
 			cin >> board[i][j];	
