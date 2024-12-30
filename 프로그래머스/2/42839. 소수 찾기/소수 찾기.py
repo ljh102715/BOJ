@@ -1,4 +1,5 @@
 import itertools
+import math
 
 def solution(numbers):
     answer = 0
@@ -17,7 +18,7 @@ def solution(numbers):
         if each < 2:
             continue
         flag = True
-        for i in range(2, each):
+        for i in range(2, int(math.sqrt(each)+1)):
             
             if each % i == 0:
                 flag = False
