@@ -1,20 +1,24 @@
+from collections import deque
 
-def dfs(visited, cur, computers, n):
+def bfs(n, computers, visited, i):
+    q = deque()
+    q.append(i)
     
-    visited[cur] = 1
-    
-    for i in range(n):
-        if cur != i and computers[cur][i] == 1 and visited[i] == 0:
-            dfs(visited, i, computers, n)
-            
+    while len(q):
+        cur = q.popleft()
+        visited[cur] = 1
+        
+        for i in range(n):
+            if visited[i] == 0 and computers[cur][i] == 1:
+                q.append(i)
 
 def solution(n, computers):
     answer = 0
-    
     visited = [0 for _ in range(n)]
     
     for i in range(n):
         if visited[i] == 0:
-            dfs(visited, i, computers, n)
+            bfs(n, computers, visited, i)
             answer += 1
+    
     return answer
